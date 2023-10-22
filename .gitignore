@@ -1,3 +1,5 @@
-.env # sensitive data
+# sensitive data
+.env
 
-.idea/ # IDE files
+# IDE filesgs
+.idea/
