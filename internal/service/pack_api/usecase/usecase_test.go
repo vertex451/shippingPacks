@@ -12,8 +12,13 @@ func TestCalculatePacksNumber(t *testing.T) {
 	}{
 		{itemsOrdered: 1, expected: map[int]int{250: 1}},
 		{itemsOrdered: 250, expected: map[int]int{250: 1}},
-		{itemsOrdered: 251, expected: map[int]int{250: 2}},
+		{itemsOrdered: 251, expected: map[int]int{500: 1}},
+		{itemsOrdered: 499, expected: map[int]int{500: 1}},
 		{itemsOrdered: 501, expected: map[int]int{500: 1, 250: 1}},
+		{itemsOrdered: 751, expected: map[int]int{1000: 1}},
+		{itemsOrdered: 999, expected: map[int]int{1000: 1}},
+		{itemsOrdered: 8750, expected: map[int]int{5000: 1, 2000: 1, 1000: 1, 500: 1, 250: 1}},
+		{itemsOrdered: 8751, expected: map[int]int{5000: 2}},
 		{itemsOrdered: 12001, expected: map[int]int{5000: 2, 2000: 1, 250: 1}},
 	}
 
@@ -21,7 +26,7 @@ func TestCalculatePacksNumber(t *testing.T) {
 	for _, test := range tests {
 		actual := uc.CalculatePacksNumber(test.itemsOrdered)
 		if !reflect.DeepEqual(test.expected, actual) {
-			t.Errorf("Maps not equal. Expected: %v, but got: %v", test.expected, actual)
+			t.Errorf("Maps are not equal. Expected: %v, got: %v", test.expected, actual)
 		}
 	}
 }
