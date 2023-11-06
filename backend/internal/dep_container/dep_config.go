@@ -2,7 +2,6 @@ package dep_container
 
 import (
 	"github.com/sarulabs/di"
-
 	"shippingPacks/internal/config"
 )
 

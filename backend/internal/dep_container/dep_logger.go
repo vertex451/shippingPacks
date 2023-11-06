@@ -3,7 +3,6 @@ package dep_container
 import (
 	"github.com/sarulabs/di"
 	"go.uber.org/zap"
-
 	"shippingPacks/internal/config"
 	"shippingPacks/pkg/logger"
 )

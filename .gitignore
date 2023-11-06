@@ -1,5 +1,4 @@
-# sensitive data
-.env
+
 
 # IDE filesgs
-.idea/
+**/.idea/

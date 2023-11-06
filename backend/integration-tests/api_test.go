@@ -6,11 +6,10 @@ import (
 	"io/ioutil"
 	"net/http"
 	"reflect"
+	"shippingPacks/internal/config"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"shippingPacks/internal/config"
 )
 
 func TestAPIEndpoints(t *testing.T) {

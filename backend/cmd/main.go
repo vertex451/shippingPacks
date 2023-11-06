@@ -4,11 +4,10 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"shippingPacks/internal/dep_container"
 	"syscall"
 
 	"go.uber.org/zap"
-
-	"shippingPacks/internal/dep_container"
 )
 
 func main() {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-
 	"github.com/sarulabs/di"
 	"go.uber.org/zap"
 
@@ -26,13 +26,16 @@ func RegisterHTTPServer(builder *di.Builder) error {
 			packApiTransport := ctn.Get(packApiDefName).(pack_api.Transport)
 
 			r := mux.NewRouter()
+			headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
+			methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"})
+			origins := handlers.AllowedOrigins([]string{"http://localhost:3000"})
 
 			r.HandleFunc("/api/v1/get-packs-number/{itemsOrdered}", packApiTransport.GetPacksNumber).Methods("GET")
 
 			zap.L().Info("started http server",
 				zap.String("address", fmt.Sprintf("http://localhost:%s/", cfg.Port)))
 
-			zap.S().Fatal("", zap.Error(http.ListenAndServe(":"+cfg.Port, r)))
+			zap.S().Fatal("", zap.Error(http.ListenAndServe(":"+cfg.Port, handlers.CORS(headers, methods, origins)(r))))
 
 			return r, nil
 		},

@@ -1,10 +1,8 @@
 package dep_container
 
 import (
-	"shippingPacks/internal/config"
-
 	"github.com/sarulabs/di"
-
+	"shippingPacks/internal/config"
 	"shippingPacks/internal/service/pack_api/transport/gorilla_mux"
 	"shippingPacks/internal/service/pack_api/usecase"
 )

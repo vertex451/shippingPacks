@@ -3,12 +3,11 @@ package gorilla_mux
 import (
 	"encoding/json"
 	"net/http"
+	"shippingPacks/internal/service/pack_api"
 	"strconv"
 
 	"github.com/gorilla/mux"
 	"go.uber.org/zap"
-
-	"shippingPacks/internal/service/pack_api"
 )
 
 type Transport struct {
