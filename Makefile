@@ -13,13 +13,26 @@ get-packs-number:
 start:
 	docker-compose up --build -d
 
-.PHONY: lint
+.PHONY: stop
 stop:
 	docker-compose down
+
+.PHONY: start-dev
+start-dev:
+	docker-compose -f docker-compose-dev.yml up  --build -d
+
+.PHONY: stop-dev
+stop-dev:
+	docker-compose -f docker-compose-dev.yml down
+
+.PHONY: build
+build-dev:
+	docker-compose build
 
 .PHONY: build
 build:
 	docker-compose build
+
 
 .PHONY: rebuild-and-restart
 rebuild-and-restart:

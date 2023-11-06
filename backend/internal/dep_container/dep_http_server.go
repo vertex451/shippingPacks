@@ -28,7 +28,7 @@ func RegisterHTTPServer(builder *di.Builder) error {
 			r := mux.NewRouter()
 			headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"})
 			methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"})
-			origins := handlers.AllowedOrigins([]string{"http://localhost:3000"})
+			origins := handlers.AllowedOrigins([]string{"*"})
 
 			r.HandleFunc("/api/v1/get-packs-number/{itemsOrdered}", packApiTransport.GetPacksNumber).Methods("GET")
 
